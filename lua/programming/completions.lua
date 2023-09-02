@@ -74,6 +74,8 @@ M.plugins = {
 				'dartls',
 				'pyright',
 				'tsserver',
+				'gopls',
+				'rust_analyzer',
 			}
 			for _,v in pairs(servers) do
 				lsp[v].setup {
