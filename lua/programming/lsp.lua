@@ -32,7 +32,7 @@ M.plugins = {
 			map("n", "gm", ":lua vim.lsp.buf.code_action()<CR>", opt)
 			map("n", "gr", ":lua vim.lsp.buf.rename()<CR>", opt)
 			map("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opt)
-			map("n", "gf", ":lua vim.lsp.buf.formatting()<CR>", opt)
+			map("n", "gf", ":lua vim.lsp.buf.format()<CR>", opt)
 			map("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opt)
 		end,
 	},
