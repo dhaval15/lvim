@@ -49,7 +49,11 @@ local config = {
 	},
  	help = {
 		cheatsheet = true,
+		-- which_key = true,
 	},
+	ai = {
+		openai = true,
+	}
 }
 
 modules.init(config)
