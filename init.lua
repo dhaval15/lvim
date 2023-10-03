@@ -47,13 +47,35 @@ local config = {
  	project = {
 		spy = true,
 	},
+	writing = {
+		fountain = true,
+	},
  	help = {
 		cheatsheet = true,
 		-- which_key = true,
 	},
 	ai = {
-		openai = true,
+		-- openai = true,
 	}
 }
 
 modules.init(config)
+
+-- Define a function to check if the script exists and execute it
+function send_r_to_kitty()
+    local script_path = vim.fn.getcwd() .. '/send_to_kitty.sh'
+    if vim.fn.filereadable(script_path) == 1 then
+        vim.fn.system(script_path)
+    end
+end
+
+-- Trigger the function when saving a Dart file
+vim.api.nvim_exec([[
+    autocmd BufWritePost *.dart lua send_r_to_kitty()
+]], false)
+
+
+require('capture')
+
+-- Map commands or keybindings to plugin functions
+

@@ -76,10 +76,25 @@ M.plugins = {
 				'tsserver',
 				'gopls',
 				'rust_analyzer',
+				'kotlin_language_server',
+				'sqlls',
 			}
 			for _,v in pairs(servers) do
 				lsp[v].setup {
 					capabilities = capabilities
+				}
+			end
+
+			--- Only for css and html
+			local extras = {
+				'cssls',
+				'html',
+			}
+			local e_capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+			for _,v in pairs(extras) do
+				lsp[v].setup {
+					capabilities = e_capabilities
 				}
 			end
 		end,
