@@ -10,11 +10,6 @@ M.plugins = {
 		},
 		config = function()
 			require('telescope').setup{
-				defaults = {
-					file_ignore_patterns = {
-						'**/node_modules/**',
-					},
-				},
 				pickers = {
 					find_files = {
 						theme = 'ivy',
@@ -49,5 +44,36 @@ M.plugins = {
 		end,
 	},
 }
+
+-- Project Files
+spy.search_project_files = function()
+	local include_pattern = table.concat(spy.include_patterns or {}, '|')
+
+	local fd_exclude_patterns = {}
+
+  for _, exclude_pattern in ipairs(spy.exclude_patterns or {}) do
+    table.insert(fd_exclude_patterns, '--exclude')
+    table.insert(fd_exclude_patterns, exclude_pattern)
+  end
+
+	local find_command = {
+    'fd',
+    '--type',
+    'f',
+		include_pattern,
+		unpack(fd_exclude_patterns),
+  }
+
+  require('telescope.builtin').find_files({
+    prompt_title = 'Search Jsx',
+    --cwd = vim.fn.expand('%:p:h'),  -- Start searching from the current directory
+    find_command = find_command,  -- Use the find_command defined above
+  })
+end
+
+
+M.post = function()
+	local map = vim.keymap.set('n', '<leader>pe', spy.search_project_files, opt)
+end
 
 return M

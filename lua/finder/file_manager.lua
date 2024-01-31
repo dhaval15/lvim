@@ -2,11 +2,22 @@ local M = {}
 
 M.plugins = {
 	{
-		'ms-jpq/chadtree',
-		branch = 'chad',
+		'nvim-telescope/telescope-file-browser.nvim',
 		dependencies = {
-			{ 'ryanoasis/vim-devicons' },
+			{ 
+				'nvim-telescope/telescope.nvim',
+				'nvim-lua/plenary.nvim',
+			},
 		},
+		config = function()
+			local opt = {
+				noremap = true,
+				silent = true,
+			}
+			local map = vim.keymap.set
+			require('telescope').load_extension('file_browser')
+			map('n', '<leader>ef', ':Telescope file_browser<CR>', opt)
+		end,
 	},
 }
 

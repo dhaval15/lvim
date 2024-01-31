@@ -1,3 +1,4 @@
+spy = {}
 local modules = require('modules')
 
 local config = {
@@ -21,7 +22,7 @@ local config = {
 	},
 	finder = {
 		ui = true,
-		file_manager = false,
+		file_manager = true,
 		picker = true,
 	},
  	vcs = {
@@ -76,6 +77,3 @@ vim.api.nvim_exec([[
 
 
 require('capture')
-
--- Map commands or keybindings to plugin functions
-
