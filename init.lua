@@ -16,7 +16,7 @@ local config = {
 	better_ui = {
 		status = true,
 		scheme = true,
-		buffer = true,
+		buffer = false,
 		layout = false,
 		menu = false,
 	},
@@ -29,21 +29,30 @@ local config = {
 		git = true,
 	},
 	notes = {
-		orgmode = true,
+		-- orgmode = true,
 		focus = true,
-		orgroam = true,
+		neuron = false,
+		-- orgroam = true,
+		markdown = true,
 	},
 	programming = {
 		format = true,
 		syntax_highlighting = true,
 		commentry = true,
+		keybindings = true,
 		lsp = true,
+		lsp_extras = true,
+		lsp_dap = true,
 		completions = true,
+		-- coc_lsp = true,
 		movement = true,
 		snippets = true,
 		doc = true,
 		focus = true,
 		extras = true,
+		-- flutter = true,
+		syntax_extras = false,
+		sqlite = true,
 	},
  	project = {
 		spy = true,
@@ -56,7 +65,7 @@ local config = {
 		-- which_key = true,
 	},
 	ai = {
-		-- openai = true,
+		copilot = true,
 	}
 }
 
@@ -77,3 +86,4 @@ vim.api.nvim_exec([[
 
 
 require('capture')
+require('patches.better_telescope')

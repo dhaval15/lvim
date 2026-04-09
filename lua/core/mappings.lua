@@ -19,8 +19,8 @@ M.pre = function ()
 	map('n', 'g*', 'g*zz', opt)
 
 	-- buffer switching
-	map('n', '<TAB>', ':bnext<CR>', opt)
-	map('n', '<S-TAB>', ':bprevious<CR>', opt)
+	map('n', 'gn', ':bnext<CR>', opt)
+	map('n', 'gp', ':bprevious<CR>', opt)
 
 	-- no help
 	map('','<F1>', '<Esc>', opt)

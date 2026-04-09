@@ -7,7 +7,7 @@ M.plugins = {
 	{
 		'rose-pine/neovim',
 		name = 'rose-pine',
-		config = function() vim.cmd [[colorscheme rose-pine]] end,
+		config = function() vim.cmd [[colorscheme gruvbox-material]] end,
 	},
 }
 return M

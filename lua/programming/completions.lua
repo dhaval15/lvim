@@ -6,7 +6,7 @@ M.plugins = {
 		dependencies = {
 			{
 				'L3MON4D3/LuaSnip',
-				tag = 'v1.2.1.*',
+				-- tag = 'v1.2.1.*',
 				build = 'make install_jsregexp',
 			},
 			{
@@ -77,7 +77,7 @@ M.plugins = {
 			-- })
 
 			-- Set up lspconfig.
-			local lsp = require('lspconfig')
+			local lsp = vim.lsp.config()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local servers = {
 				'dartls',

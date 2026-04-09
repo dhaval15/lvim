@@ -1,18 +1,53 @@
 local M = {}
 
+
 M.plugins = {
 	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.4',
 		-- or branch = '0.1.x',
 		dependencies = {
-			{ 'nvim-lua/plenary.nvim' },
+			{ 'nvim-lua/plenary.nvim', },
+			{ 'MunifTanjim/nui.nvim', },
 		},
 		config = function()
 			require('telescope').setup{
+				defaults = {
+					path_display = { "smart" },
+					-- path_display = function(opts, path)
+					-- 	local tail = require("telescope.utils").path_tail(path)
+					-- 	return string.format("%s (%s)", tail, path)
+					-- end,
+					layout_config = {
+						vertical = { 
+							width = 0.99,
+							height = 0.99,
+							preview_cutoff = 120,
+						},
+						horizontal = {
+							height = 0.99,
+							preview_cutoff = 120,
+							prompt_position = "bottom",
+							width = 0.99,
+						},
+						-- other layout configuration here
+					},
+					-- other defaults configuration here
+				},
 				pickers = {
 					find_files = {
+						layout_strategy = 'bottom_pane',
 						theme = 'ivy',
+						prompt_title = false,
+						prompt_prefix = 'Files> ',
+						-- previewer = false,
+						show_line = false,
+						-- borderchars = {
+						-- 		{ '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+						-- 		prompt = {"─", "│", "_", "│", '┌', '┐', "│", "│"},
+						-- 		results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+						-- 		preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+						-- },
 					},
 				},
 			}
@@ -24,7 +59,8 @@ M.plugins = {
 			local builtin = require('telescope.builtin')
 			-- Files
 			map('n', '<leader>ee', builtin.find_files, opt)
-			map('n', '<leader>e<Tab>', builtin.buffers, opt)
+			map('n', '<leader>er', ':Telescope frecency workspace=CWD<CR>', opt)
+			map('n', '<leader>eb', builtin.buffers, opt)
 			map('n', '<leader>eg', builtin.git_files, opt)
 
 			-- UI
@@ -43,6 +79,18 @@ M.plugins = {
 			map('n', '<leader>fm', builtin.man_pages, opt)
 		end,
 	},
+	{
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require("telescope").load_extension "frecency"
+		end,
+	},
+	{
+		'fannheyward/telescope-coc.nvim',
+		config = function()
+			require("telescope").load_extension("coc")
+		end
+	}
 }
 
 -- Project Files
