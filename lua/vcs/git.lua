@@ -42,6 +42,20 @@ M.plugins = {
 		end,
 	},
 	{
+		'pwntester/octo.nvim',
+		cmd = 'Octo',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim',
+			'nvim-tree/nvim-web-devicons',
+		},
+		config = function()
+			require('octo').setup({
+				enable_builtin = true,
+			})
+		end,
+	},
+	{
 		'isakbm/gitgraph.nvim',
 		dependencies = { 'sindrets/diffview.nvim' },
 		config = function()
