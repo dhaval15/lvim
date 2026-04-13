@@ -77,21 +77,19 @@ M.plugins = {
 			-- })
 
 			-- Set up lspconfig.
-			local lsp = vim.lsp.config()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local servers = {
 				'dartls',
 				'pyright',
-				'tsserver',
+				'ts_ls',
 				'gopls',
 				'rust_analyzer',
 				'kotlin_language_server',
 				'sqlls',
 			}
 			for _,v in pairs(servers) do
-				lsp[v].setup {
-					capabilities = capabilities
-				}
+				vim.lsp.config(v, { capabilities = capabilities })
+				vim.lsp.enable(v)
 			end
 
 			--- Only for css and html
@@ -100,11 +98,10 @@ M.plugins = {
 				'html',
 			}
 			local e_capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities.textDocument.completion.completionItem.snippetSupport = true
+			e_capabilities.textDocument.completion.completionItem.snippetSupport = true
 			for _,v in pairs(extras) do
-				lsp[v].setup {
-					capabilities = e_capabilities
-				}
+				vim.lsp.config(v, { capabilities = e_capabilities })
+				vim.lsp.enable(v)
 			end
 		end,
 	},

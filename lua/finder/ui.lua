@@ -5,10 +5,10 @@ M.plugins = {
 	{
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.4',
-		-- or branch = '0.1.x',
 		dependencies = {
 			{ 'nvim-lua/plenary.nvim', },
 			{ 'MunifTanjim/nui.nvim', },
+			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 		},
 		config = function()
 			require('telescope').setup{
@@ -51,6 +51,8 @@ M.plugins = {
 					},
 				},
 			}
+			require('telescope').load_extension('fzf')
+
 			local opt = {
 				noremap = true,
 				silent = true,
@@ -121,7 +123,7 @@ end
 
 
 M.post = function()
-	local map = vim.keymap.set('n', '<leader>pe', spy.search_project_files, opt)
+	vim.keymap.set('n', '<leader>pe', spy.search_project_files, { noremap = true, silent = true })
 end
 
 return M

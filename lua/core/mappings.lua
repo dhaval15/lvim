@@ -29,5 +29,8 @@ M.pre = function ()
 	-- H/L
 	map('n', 'H', '^', opt)
 	map('n', 'L', '$', opt)
+
+	-- Reload config
+	map('n', '<leader>sv', ':source $MYVIMRC<CR>', opt)
 end
 return M

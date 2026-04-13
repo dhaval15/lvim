@@ -12,10 +12,15 @@ local config = {
 		movement = true,
 		surround = true,
 		clipboard = true,
+		terminal = true,
 	},
 	better_ui = {
 		status = true,
 		scheme = true,
+		noice = true,
+		animation = true,
+		edgy = true,
+		zone = false,
 		buffer = false,
 		layout = false,
 		menu = false,
@@ -24,6 +29,7 @@ local config = {
 		ui = true,
 		file_manager = true,
 		picker = true,
+		spectre = true,
 	},
  	vcs = {
 		git = true,
@@ -34,6 +40,7 @@ local config = {
 		neuron = false,
 		-- orgroam = true,
 		markdown = true,
+		obsidian = true,
 	},
 	programming = {
 		format = true,
@@ -50,7 +57,7 @@ local config = {
 		doc = true,
 		focus = true,
 		extras = true,
-		-- flutter = true,
+		flutter = true,
 		syntax_extras = false,
 		sqlite = true,
 	},
@@ -59,10 +66,11 @@ local config = {
 	},
 	writing = {
 		fountain = true,
+		markdown = true,
 	},
  	help = {
 		cheatsheet = true,
-		-- which_key = true,
+		which_key = true,
 	},
 	ai = {
 		copilot = true,

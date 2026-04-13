@@ -4,8 +4,7 @@ M.plugins = {
 	{
 		'neovim/nvim-lspconfig',
 		config = function()
-			local lsp = vim.lsp.config()
-			lsp.lua_ls.setup {
+			vim.lsp.config('lua_ls', {
 				settings = {
 					Lua = {
 						runtime = {
@@ -22,7 +21,8 @@ M.plugins = {
 						},
 					},
 				},
-			}
+			})
+			vim.lsp.enable('lua_ls')
 			local opt = {
 				noremap = true,
 				silent  = true,
@@ -30,7 +30,6 @@ M.plugins = {
 			local map = vim.keymap.set
 			-- actions
 			map("n", "K", ':lua vim.lsp.buf.hover()<CR>', {silent = true})
-			map("n", "gm", ":lua vim.lsp.buf.code_action()<CR>", opt)
 			map("n", "gf", ":lua vim.lsp.buf.format()<CR>", opt)
 			map("n", "gR", ":lua vim.lsp.buf.rename()<CR>", opt)
 
@@ -40,9 +39,12 @@ M.plugins = {
 			map("n", "gi", ":Telescope lsp_incoming_calls<CR>", opt)
 			map("n", "gI", ":Telescope lsp_implementations<CR>", opt)
 			map("n", "gw", ":Telescope lsp_dynamic_workspace_symbols<CR>", opt)
+			map("n", "gs", ":Telescope lsp_dynamic_workspace_symbols<CR>", opt)
+			map("n", "gh", ":Telescope lsp_incoming_calls<CR>", opt)
 
 			map("n", "gD", ":Telescope diagnostics<CR>", opt)
-			map("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opt)
+			map("n", "ge", ":Telescope diagnostics<CR>", opt)
+			map("n", "go", ":Telescope lsp_document_symbols<CR>", opt)
 		end,
 	},
 }
